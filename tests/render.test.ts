@@ -132,7 +132,6 @@ const hass: HomeAssistant = {
     }
     return null;
   }),
-  dispatchEvent: () => true,
 };
 
 describe("AtreaAmotionCard", () => {
@@ -328,6 +327,20 @@ describe("AtreaAmotionCard", () => {
       entity_id: "climate.hrv",
       fan_mode: "67",
     });
+  });
+
+  it("opens more-info from the schematic fans through an event fired by the card", async () => {
+    const element = await fixture<AtreaAmotionCard>(html`<atrea-amotion-card></atrea-amotion-card>`);
+    element.setConfig(config);
+    element.hass = hass;
+    await element.updateComplete;
+
+    const listener = vi.fn();
+    element.addEventListener("hass-more-info", listener);
+    element.shadowRoot?.querySelector<SVGGElement>(".fan-group")?.dispatchEvent(new MouseEvent("click", { bubbles: true, composed: true }));
+
+    expect(listener).toHaveBeenCalledTimes(1);
+    expect((listener.mock.calls[0]![0] as CustomEvent).detail).toEqual({ entityId: "sensor.extract_speed", view: "info" });
   });
 
   it("closes the fan popup on outside click and after timeout", async () => {

@@ -21,7 +21,6 @@ export interface HomeAssistant {
     target?: Record<string, unknown>
   ): Promise<unknown>;  
   callWS?(message: Record<string, unknown>): Promise<unknown>;
-  dispatchEvent(event: Event): boolean;
 }
 
 export interface LovelaceCardEditor {
@@ -307,8 +306,6 @@ export interface HomeAssistant {
     data?: Record<string, unknown>,
     target?: Record<string, unknown>
   ): Promise<unknown>;
-
-  dispatchEvent(event: Event): boolean;
 
   localize?: (key: string, ...args: unknown[]) => string;
 

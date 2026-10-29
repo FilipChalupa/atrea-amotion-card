@@ -78,6 +78,7 @@ export class AtreaAmotionCard extends LitElement implements LovelaceCard {
     return html`
       <ha-card class=${cardClasses}>
         ${renderCardSvg(this.hass, this.config, model, {
+          host: this,
           alertPopupOpen: this.isAlertPopupOpen,
           fanPopupOpen: this.isFanPopupOpen,
           fanPopupValue: this.fanPopupValue ?? resolvedFanValue ?? 0,
@@ -110,6 +111,7 @@ export class AtreaAmotionCard extends LitElement implements LovelaceCard {
         })}
         ${this.isMoreInfoOpen
           ? renderMoreInfoDialog(
+              this,
               this.hass,
               this.config,
               () => {

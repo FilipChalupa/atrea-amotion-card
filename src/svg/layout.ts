@@ -148,6 +148,7 @@ interface VisualSelectOption {
 }
 
 interface CardRenderHandlers {
+  host: EventTarget;
   alertPopupOpen: boolean;
   onAlertPopupInteract: () => void;
   onCloseAlertPopup: () => void;
@@ -445,38 +446,38 @@ export function renderCardSvg(
                 </g>
 
                 <g class="component-layer">
-                  ${renderFan("Extract fan", model.fans.extract, fanCenters.extract.x, fanCenters.extract.y, () => handleEntityTap(hass, tap.extract_fan, model.fans.extract.speedEntity))}
-                  ${renderFan("Supply fan", model.fans.supply, fanCenters.supply.x, fanCenters.supply.y, () => handleEntityTap(hass, tap.supply_fan, model.fans.supply.speedEntity))}
-                  ${renderDamper("ODA", model.dampers.oda, damperAnchors.oda.x, damperAnchors.oda.y, false, () => handleEntityTap(hass, tap.oda_damper, model.dampers.oda.entity))}
-                  ${renderDamper("ETA", model.dampers.eta, damperAnchors.eta.x, damperAnchors.eta.y, false, () => handleEntityTap(hass, tap.eta_damper, model.dampers.eta.entity))}
+                  ${renderFan("Extract fan", model.fans.extract, fanCenters.extract.x, fanCenters.extract.y, () => handleEntityTap(handlers.host, tap.extract_fan, model.fans.extract.speedEntity))}
+                  ${renderFan("Supply fan", model.fans.supply, fanCenters.supply.x, fanCenters.supply.y, () => handleEntityTap(handlers.host, tap.supply_fan, model.fans.supply.speedEntity))}
+                  ${renderDamper("ODA", model.dampers.oda, damperAnchors.oda.x, damperAnchors.oda.y, false, () => handleEntityTap(handlers.host, tap.oda_damper, model.dampers.oda.entity))}
+                  ${renderDamper("ETA", model.dampers.eta, damperAnchors.eta.x, damperAnchors.eta.y, false, () => handleEntityTap(handlers.host, tap.eta_damper, model.dampers.eta.entity))}
                   ${renderFilter(
                     model.filters.oda,
                     flowPaths.filterLeft,
                     [ "m 357,361 10,-10", "m 345.5,349.5 10,-10", "m 334,338 10,-10", "m 322.5,326.5 10,-10", "m 391.5,395.5 10,-10", "m 380,384 10,-10", "m 368.5,372.5 10,-10" ],
-                    () => handleEntityTap(hass, tap.oda_filter, model.filters.oda.statusEntity ?? model.filters.oda.lifeEntity),
+                    () => handleEntityTap(handlers.host, tap.oda_filter, model.filters.oda.statusEntity ?? model.filters.oda.lifeEntity),
                   )}
                   ${renderFilter(
                     model.filters.eta,
                     flowPaths.filterRight,
                     [ "m 357,361 10,-10", "m 345.5,349.5 10,-10", "m 334,338 10,-10", "m 322.5,326.5 10,-10", "m 391.5,395.5 10,-10", "m 380,384 10,-10", "m 368.5,372.5 10,-10" ],
-                    () => handleEntityTap(hass, tap.eta_filter, model.filters.eta.statusEntity ?? model.filters.eta.lifeEntity),
+                    () => handleEntityTap(handlers.host, tap.eta_filter, model.filters.eta.statusEntity ?? model.filters.eta.lifeEntity),
                   )}
                 </g>
 
                 <g class="overlay-layer">
                   ${layout.show_temp
                     ? svg`
-                        ${renderTemperatureBadge("EHA", model.temperatures.eha, temperatureAnchors.eha.x, temperatureAnchors.eha.y, () => handleEntityTap(hass, tap.eha_temperature, model.temperatures.eha.entity))}
-                        ${renderTemperatureBadge("ODA", model.temperatures.oda, temperatureAnchors.oda.x, temperatureAnchors.oda.y, () => handleEntityTap(hass, tap.oda_temperature, model.temperatures.oda.entity))}
-                        ${renderTemperatureBadge("SUP", model.temperatures.sup, temperatureAnchors.sup.x, temperatureAnchors.sup.y, () => handleEntityTap(hass, tap.sup_temperature, model.temperatures.sup.entity))}
-                        ${renderTemperatureBadge("ETA", model.temperatures.eta, temperatureAnchors.eta.x, temperatureAnchors.eta.y, () => handleEntityTap(hass, tap.eta_temperature, model.temperatures.eta.entity))}
+                        ${renderTemperatureBadge("EHA", model.temperatures.eha, temperatureAnchors.eha.x, temperatureAnchors.eha.y, () => handleEntityTap(handlers.host, tap.eha_temperature, model.temperatures.eha.entity))}
+                        ${renderTemperatureBadge("ODA", model.temperatures.oda, temperatureAnchors.oda.x, temperatureAnchors.oda.y, () => handleEntityTap(handlers.host, tap.oda_temperature, model.temperatures.oda.entity))}
+                        ${renderTemperatureBadge("SUP", model.temperatures.sup, temperatureAnchors.sup.x, temperatureAnchors.sup.y, () => handleEntityTap(handlers.host, tap.sup_temperature, model.temperatures.sup.entity))}
+                        ${renderTemperatureBadge("ETA", model.temperatures.eta, temperatureAnchors.eta.x, temperatureAnchors.eta.y, () => handleEntityTap(handlers.host, tap.eta_temperature, model.temperatures.eta.entity))}
                       `
                     : nothing}
 
                   ${layout.show_speed
                     ? svg`
-                        ${renderFanSpeedBadge(model.fans.extract, 255, 115, () => handleEntityTap(hass, tap.extract_fan, model.fans.extract.speedEntity))}
-                        ${renderFanSpeedBadge(model.fans.supply, 745, 115, () => handleEntityTap(hass, tap.supply_fan, model.fans.supply.speedEntity))}
+                        ${renderFanSpeedBadge(model.fans.extract, 255, 115, () => handleEntityTap(handlers.host, tap.extract_fan, model.fans.extract.speedEntity))}
+                        ${renderFanSpeedBadge(model.fans.supply, 745, 115, () => handleEntityTap(handlers.host, tap.supply_fan, model.fans.supply.speedEntity))}
                       `
                     : nothing}
 
