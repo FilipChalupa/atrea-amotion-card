@@ -21,6 +21,14 @@ export interface HomeAssistant {
     target?: Record<string, unknown>
   ): Promise<unknown>;  
   callWS?(message: Record<string, unknown>): Promise<unknown>;
+  entities?: Record<string, HomeAssistantEntityRegistryEntry>;
+}
+
+export interface HomeAssistantEntityRegistryEntry {
+  entity_id: EntityId;
+  device_id?: string | null;
+  platform?: string;
+  translation_key?: string;
 }
 
 export interface LovelaceCardEditor {
@@ -115,6 +123,7 @@ export interface AtreaAmotionCardConfig {
   climate_entity: EntityId;
   bypass_select?: EntityId;
   filter_reset_button?: EntityId;
+  airflow_request_number?: EntityId;
   entities?: EntityConfig;
   layout?: LayoutConfig;
   tap_actions?: TapActionConfig;
@@ -200,6 +209,15 @@ export interface FilterState {
   available: boolean;
 }
 
+export interface AirflowRequestState {
+  entity: string;
+  value: number | null;
+  min: number;
+  max: number;
+  step: number;
+  unit: string;
+}
+
 export interface ModeOptionGroup {
   current: string | null;
   options: string[];
@@ -264,6 +282,7 @@ export interface AtreaCardViewModel {
     eta: FilterState;
   };
   mode: ModeState;
+  airflowRequest: AirflowRequestState | null;
   alerts: AlertState;
   availability: AvailabilityState;
 }

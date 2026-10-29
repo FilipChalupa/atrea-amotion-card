@@ -263,7 +263,7 @@ function renderCardFeatures(
       if (presetAction.id === "fan") {
         return {
           action: handlers.onToggleFanPopup,
-          disabled: !model.mode.fan.controllable,
+          disabled: !model.airflowRequest && !model.mode.fan.controllable,
           icon: presetAction.icon,
           id: `action-${presetAction.id}`,
           label: presetAction.label,
@@ -288,11 +288,17 @@ function renderCardFeatures(
 }
 
 function renderFanPopup(model: AtreaCardViewModel, handlers: CardRenderHandlers): TemplateResult {
-  if (!handlers.fanPopupOpen || !model.mode.fan.controllable) {
+  if (!handlers.fanPopupOpen || (!model.airflowRequest && !model.mode.fan.controllable)) {
     return html``;
   }
 
-  const displayValue = Math.round(Math.max(0, Math.min(100, handlers.fanPopupValue)));
+  const airflow = model.airflowRequest;
+  const min = airflow?.min ?? 0;
+  const max = airflow?.max ?? 100;
+  const step = airflow?.step ?? 1;
+  const displayValue = Math.round(Math.max(min, Math.min(max, handlers.fanPopupValue)));
+  const title = airflow ? "Airflow" : "Fan speed";
+  const valueLabel = airflow ? `${displayValue}${airflow.unit ? ` ${airflow.unit}` : ""}` : `${displayValue}%`;
 
   return html`
     <div class="fan-popup-shell" @click=${handlers.onCloseFanPopup}>
@@ -305,20 +311,20 @@ function renderFanPopup(model: AtreaCardViewModel, handlers: CardRenderHandlers)
         }}
       >
         <div class="fan-popup-header">
-          <span class="fan-popup-title">Fan speed</span>
-          <span class="fan-popup-value">${displayValue}%</span>
+          <span class="fan-popup-title">${title}</span>
+          <span class="fan-popup-value">${valueLabel}</span>
         </div>
         <div class="fan-popup-controls">
-          <button class="fan-step-button" type="button" aria-label="Decrease fan speed" @click=${handlers.onFanDecrease}>-</button>
+          <button class="fan-step-button" type="button" aria-label="Decrease ${title.toLowerCase()}" @click=${handlers.onFanDecrease}>-</button>
           <div class="fan-slider-wrap">
             <input
               class="fan-slider"
               type="range"
-              min="0"
-              max="100"
-              step="1"
+              min=${String(min)}
+              max=${String(max)}
+              step=${String(step)}
               .value=${String(displayValue)}
-              aria-label="Fan speed percentage"
+              aria-label=${airflow ? "Requested airflow" : "Fan speed percentage"}
               @input=${(event: Event) => {
                 const target = event.currentTarget as HTMLInputElement;
                 handlers.onFanPreviewChange(Number.parseInt(target.value, 10));
@@ -329,7 +335,7 @@ function renderFanPopup(model: AtreaCardViewModel, handlers: CardRenderHandlers)
               }}
             />
           </div>
-          <button class="fan-step-button" type="button" aria-label="Increase fan speed" @click=${handlers.onFanIncrease}>+</button>
+          <button class="fan-step-button" type="button" aria-label="Increase ${title.toLowerCase()}" @click=${handlers.onFanIncrease}>+</button>
         </div>
       </div>
     </div>

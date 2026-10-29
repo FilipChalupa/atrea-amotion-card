@@ -142,6 +142,13 @@ export async function setClimateFanPercentage(hass: HomeAssistant, entityId: str
   await selectMode(hass, entityId, "fan", nearest.option);
 }
 
+export async function setAirflowRequest(hass: HomeAssistant, entityId: string, value: number): Promise<void> {
+  await hass.callService("number", "set_value", {
+    entity_id: entityId,
+    value,
+  });
+}
+
 export async function setClimateTemperature(hass: HomeAssistant, entityId: string, temperature: number): Promise<void> {
   await hass.callService("climate", "set_temperature", {
     entity_id: entityId,
