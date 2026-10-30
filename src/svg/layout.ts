@@ -1,6 +1,6 @@
 import { html, nothing, svg, type TemplateResult } from "lit";
 import { mdiAlertCircleOutline, mdiDotsVertical, mdiFan, mdiFanAuto, mdiPower, mdiWeatherNight } from "@mdi/js";
-import type { AtreaAmotionCardConfig, AtreaCardViewModel, DamperState, FanState, FilterState, HomeAssistant, TemperaturePoint } from "../types";
+import type { AirflowRequestState, AtreaAmotionCardConfig, AtreaCardViewModel, DamperState, FanState, FilterState, HomeAssistant, TemperaturePoint } from "../types";
 import { handleEntityTap, selectMode } from "../actions";
 import { resolveTitle } from "../title";
 import { fanAnimationDuration, flowAnimationDuration } from "./animations";
@@ -25,6 +25,16 @@ function renderFanSpeedBadge(fan: FanState, x: number, y: number, onClick?: () =
     <g class=${badgeClass(fan.available, "metric-badge fan-speed-badge")} transform="translate(${x}, ${y})" @click=${onClick}>
       <rect x="-45" y="-18" width="90" height="36" rx="9"></rect>
       <text x="0" y="4" class="badge-value temperature-only">${formatValueWithUnit(fan.speedPercent, "%", 0)}</text>
+    </g>
+  `;
+}
+
+function renderAirflowRequestBadge(airflow: AirflowRequestState, x: number, y: number, onClick?: () => void): TemplateResult {
+  const value = airflow.value === null ? "--" : `${Math.round(airflow.value)} ${airflow.unit}`;
+  return svg`
+    <g class="badge metric-badge airflow-request-badge" transform="translate(${x}, ${y})" @click=${onClick}>
+      <rect x="-80" y="-18" width="160" height="36" rx="9"></rect>
+      <text x="0" y="4" class="badge-value temperature-only">${value}</text>
     </g>
   `;
 }
@@ -485,6 +495,10 @@ export function renderCardSvg(
                         ${renderFanSpeedBadge(model.fans.extract, 255, 115, () => handleEntityTap(handlers.host, tap.extract_fan, model.fans.extract.speedEntity))}
                         ${renderFanSpeedBadge(model.fans.supply, 745, 115, () => handleEntityTap(handlers.host, tap.supply_fan, model.fans.supply.speedEntity))}
                       `
+                    : nothing}
+
+                  ${layout.show_airflow && model.airflowRequest
+                    ? renderAirflowRequestBadge(model.airflowRequest, 500, 150, handlers.onToggleFanPopup)
                     : nothing}
 
                   <g class="port-labels">

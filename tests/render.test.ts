@@ -299,6 +299,7 @@ describe("AtreaAmotionCard", () => {
     element.hass = hass;
     await element.updateComplete;
 
+    expect(element.shadowRoot?.querySelector(".airflow-request-badge")).toBeNull();
     element.shadowRoot?.querySelector<HTMLElement>("#action-standby")?.click();
     element.shadowRoot?.querySelector<HTMLElement>("#action-fan")?.click();
     await element.updateComplete;
@@ -369,7 +370,8 @@ describe("AtreaAmotionCard", () => {
     element.hass = airflowHass;
     await element.updateComplete;
 
-    element.shadowRoot?.querySelector<HTMLElement>("#action-fan")?.click();
+    expect(element.shadowRoot?.querySelector(".airflow-request-badge")?.textContent?.trim()).toBe("1900 m³/h");
+    element.shadowRoot?.querySelector<SVGGElement>(".airflow-request-badge")?.dispatchEvent(new MouseEvent("click"));
     await element.updateComplete;
 
     const slider = element.shadowRoot?.querySelector<HTMLInputElement>(".fan-slider");

@@ -1,4 +1,4 @@
-/* build-date: 2026-10-29T11:15:06.511Z */
+/* build-date: 2026-10-30T13:29:52.459Z */
 /**
  * @license
  * Copyright 2019 Google LLC
@@ -265,7 +265,7 @@ R.elementStyles = [], R.shadowRootOptions = { mode: "open" }, R[B("elementProper
  */
 const Ee = globalThis, Re = (t) => t, de = Ee.trustedTypes, Ie = de ? de.createPolicy("lit-html", { createHTML: (t) => t }) : void 0, ot = "$lit$", k = `lit$${Math.random().toFixed(9).slice(2)}$`, st = "?" + k, Zt = `<${st}>`, z = document, W = () => z.createComment(""), Z = (t) => t === null || typeof t != "object" && typeof t != "function", Se = Array.isArray, Gt = (t) => Se(t) || typeof t?.[Symbol.iterator] == "function", be = `[ 	
 \f\r]`, q = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, Ue = /-->/g, je = />/g, T = RegExp(`>|${be}(?:([^\\s"'>=/]+)(${be}*=${be}*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`, "g"), De = /'/g, qe = /"/g, lt = /^(?:script|style|textarea|title)$/i, ct = (t) => (e, ...r) => ({ _$litType$: t, strings: e, values: r }), p = ct(1), y = ct(2), j = Symbol.for("lit-noChange"), u = Symbol.for("lit-nothing"), Be = /* @__PURE__ */ new WeakMap(), L = z.createTreeWalker(z, 129);
+\f\r"'\`<>=]|("|')|))|$)`, "g"), De = /'/g, qe = /"/g, lt = /^(?:script|style|textarea|title)$/i, ct = (t) => (e, ...r) => ({ _$litType$: t, strings: e, values: r }), u = ct(1), b = ct(2), j = Symbol.for("lit-noChange"), p = Symbol.for("lit-nothing"), Be = /* @__PURE__ */ new WeakMap(), L = z.createTreeWalker(z, 129);
 function pt(t, e) {
   if (!Se(t) || !t.hasOwnProperty("raw")) throw Error("invalid template strings array");
   return Ie !== void 0 ? Ie.createHTML(e) : e;
@@ -275,8 +275,8 @@ const Kt = (t, e) => {
   let i, n = e === 2 ? "<svg>" : e === 3 ? "<math>" : "", o = q;
   for (let s = 0; s < r; s++) {
     const l = t[s];
-    let c, f, d = -1, b = 0;
-    for (; b < l.length && (o.lastIndex = b, f = o.exec(l), f !== null); ) b = o.lastIndex, o === q ? f[1] === "!--" ? o = Ue : f[1] !== void 0 ? o = je : f[2] !== void 0 ? (lt.test(f[2]) && (i = RegExp("</" + f[2], "g")), o = T) : f[3] !== void 0 && (o = T) : o === T ? f[0] === ">" ? (o = i ?? q, d = -1) : f[1] === void 0 ? d = -2 : (d = o.lastIndex - f[2].length, c = f[1], o = f[3] === void 0 ? T : f[3] === '"' ? qe : De) : o === qe || o === De ? o = T : o === Ue || o === je ? o = q : (o = T, i = void 0);
+    let c, f, d = -1, y = 0;
+    for (; y < l.length && (o.lastIndex = y, f = o.exec(l), f !== null); ) y = o.lastIndex, o === q ? f[1] === "!--" ? o = Ue : f[1] !== void 0 ? o = je : f[2] !== void 0 ? (lt.test(f[2]) && (i = RegExp("</" + f[2], "g")), o = T) : f[3] !== void 0 && (o = T) : o === T ? f[0] === ">" ? (o = i ?? q, d = -1) : f[1] === void 0 ? d = -2 : (d = o.lastIndex - f[2].length, c = f[1], o = f[3] === void 0 ? T : f[3] === '"' ? qe : De) : o === qe || o === De ? o = T : o === Ue || o === je ? o = q : (o = T, i = void 0);
     const x = o === T && t[s + 1].startsWith("/>") ? " " : "";
     n += o === q ? l + Zt : d >= 0 ? (a.push(c), l.slice(0, d) + ot + l.slice(d) + k + x) : l + k + (d === -2 ? s : x);
   }
@@ -295,15 +295,15 @@ class G {
     for (; (i = L.nextNode()) !== null && l.length < s; ) {
       if (i.nodeType === 1) {
         if (i.hasAttributes()) for (const d of i.getAttributeNames()) if (d.endsWith(ot)) {
-          const b = f[o++], x = i.getAttribute(d).split(k), V = /([.?@])?(.*)/.exec(b);
+          const y = f[o++], x = i.getAttribute(d).split(k), V = /([.?@])?(.*)/.exec(y);
           l.push({ type: 1, index: n, name: V[2], strings: x, ctor: V[1] === "." ? Jt : V[1] === "?" ? Qt : V[1] === "@" ? Xt : he }), i.removeAttribute(d);
         } else d.startsWith(k) && (l.push({ type: 6, index: n }), i.removeAttribute(d));
         if (lt.test(i.tagName)) {
-          const d = i.textContent.split(k), b = d.length - 1;
-          if (b > 0) {
+          const d = i.textContent.split(k), y = d.length - 1;
+          if (y > 0) {
             i.textContent = de ? de.emptyScript : "";
-            for (let x = 0; x < b; x++) i.append(d[x], W()), L.nextNode(), l.push({ type: 2, index: ++n });
-            i.append(d[b], W());
+            for (let x = 0; x < y; x++) i.append(d[x], W()), L.nextNode(), l.push({ type: 2, index: ++n });
+            i.append(d[y], W());
           }
         }
       } else if (i.nodeType === 8) if (i.data === st) l.push({ type: 2, index: n });
@@ -358,7 +358,7 @@ class K {
     return this._$AM?._$AU ?? this._$Cv;
   }
   constructor(e, r, a, i) {
-    this.type = 2, this._$AH = u, this._$AN = void 0, this._$AA = e, this._$AB = r, this._$AM = a, this.options = i, this._$Cv = i?.isConnected ?? !0;
+    this.type = 2, this._$AH = p, this._$AN = void 0, this._$AA = e, this._$AB = r, this._$AM = a, this.options = i, this._$Cv = i?.isConnected ?? !0;
   }
   get parentNode() {
     let e = this._$AA.parentNode;
@@ -372,7 +372,7 @@ class K {
     return this._$AB;
   }
   _$AI(e, r = this) {
-    e = D(this, e, r), Z(e) ? e === u || e == null || e === "" ? (this._$AH !== u && this._$AR(), this._$AH = u) : e !== this._$AH && e !== j && this._(e) : e._$litType$ !== void 0 ? this.$(e) : e.nodeType !== void 0 ? this.T(e) : Gt(e) ? this.k(e) : this._(e);
+    e = D(this, e, r), Z(e) ? e === p || e == null || e === "" ? (this._$AH !== p && this._$AR(), this._$AH = p) : e !== this._$AH && e !== j && this._(e) : e._$litType$ !== void 0 ? this.$(e) : e.nodeType !== void 0 ? this.T(e) : Gt(e) ? this.k(e) : this._(e);
   }
   O(e) {
     return this._$AA.parentNode.insertBefore(e, this._$AB);
@@ -381,7 +381,7 @@ class K {
     this._$AH !== e && (this._$AR(), this._$AH = this.O(e));
   }
   _(e) {
-    this._$AH !== u && Z(this._$AH) ? this._$AA.nextSibling.data = e : this.T(z.createTextNode(e)), this._$AH = e;
+    this._$AH !== p && Z(this._$AH) ? this._$AA.nextSibling.data = e : this.T(z.createTextNode(e)), this._$AH = e;
   }
   $(e) {
     const { values: r, _$litType$: a } = e, i = typeof a == "number" ? this._$AC(e) : (a.el === void 0 && (a.el = G.createElement(pt(a.h, a.h[0]), this.options)), a);
@@ -420,7 +420,7 @@ class he {
     return this._$AM._$AU;
   }
   constructor(e, r, a, i, n) {
-    this.type = 1, this._$AH = u, this._$AN = void 0, this.element = e, this.name = r, this._$AM = i, this.options = n, a.length > 2 || a[0] !== "" || a[1] !== "" ? (this._$AH = Array(a.length - 1).fill(new String()), this.strings = a) : this._$AH = u;
+    this.type = 1, this._$AH = p, this._$AN = void 0, this.element = e, this.name = r, this._$AM = i, this.options = n, a.length > 2 || a[0] !== "" || a[1] !== "" ? (this._$AH = Array(a.length - 1).fill(new String()), this.strings = a) : this._$AH = p;
   }
   _$AI(e, r = this, a, i) {
     const n = this.strings;
@@ -429,12 +429,12 @@ class he {
     else {
       const s = e;
       let l, c;
-      for (e = n[0], l = 0; l < n.length - 1; l++) c = D(this, s[a + l], r, l), c === j && (c = this._$AH[l]), o ||= !Z(c) || c !== this._$AH[l], c === u ? e = u : e !== u && (e += (c ?? "") + n[l + 1]), this._$AH[l] = c;
+      for (e = n[0], l = 0; l < n.length - 1; l++) c = D(this, s[a + l], r, l), c === j && (c = this._$AH[l]), o ||= !Z(c) || c !== this._$AH[l], c === p ? e = p : e !== p && (e += (c ?? "") + n[l + 1]), this._$AH[l] = c;
     }
     o && !i && this.j(e);
   }
   j(e) {
-    e === u ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, e ?? "");
+    e === p ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, e ?? "");
   }
 }
 class Jt extends he {
@@ -442,7 +442,7 @@ class Jt extends he {
     super(...arguments), this.type = 3;
   }
   j(e) {
-    this.element[this.name] = e === u ? void 0 : e;
+    this.element[this.name] = e === p ? void 0 : e;
   }
 }
 class Qt extends he {
@@ -450,7 +450,7 @@ class Qt extends he {
     super(...arguments), this.type = 4;
   }
   j(e) {
-    this.element.toggleAttribute(this.name, !!e && e !== u);
+    this.element.toggleAttribute(this.name, !!e && e !== p);
   }
 }
 class Xt extends he {
@@ -458,8 +458,8 @@ class Xt extends he {
     super(e, r, a, i, n), this.type = 5;
   }
   _$AI(e, r = this) {
-    if ((e = D(this, e, r, 0) ?? u) === j) return;
-    const a = this._$AH, i = e === u && a !== u || e.capture !== a.capture || e.once !== a.once || e.passive !== a.passive, n = e !== u && (a === u || i);
+    if ((e = D(this, e, r, 0) ?? p) === j) return;
+    const a = this._$AH, i = e === p && a !== p || e.capture !== a.capture || e.once !== a.once || e.passive !== a.passive, n = e !== p && (a === p || i);
     i && this.element.removeEventListener(this.name, this, a), n && this.element.addEventListener(this.name, this, e), this._$AH = e;
   }
   handleEvent(e) {
@@ -580,7 +580,7 @@ let Ae = class extends O {
     this.config = t;
   }
   render() {
-    return p`
+    return u`
       <ha-alert alert-type="info">
         Configure entity IDs in YAML. Visual editor support can be expanded later.
       </ha-alert>
@@ -1102,7 +1102,7 @@ function zr(t) {
   return r === e.length ? "full" : r >= 4 ? "partial" : "minimal";
 }
 function Fr(t, e) {
-  const r = e.entities, a = $r(t, e), i = bt(a), n = typeof i.temperature_unit == "string" ? i.temperature_unit : "°C", o = typeof i.airflow_unit == "string" ? i.airflow_unit : null, s = typeof i.power_unit == "string" ? i.power_unit : null, l = h(t, r?.temperatures?.oda), c = h(t, r?.temperatures?.eta), f = h(t, r?.temperatures?.sup), d = h(t, r?.temperatures?.eha), b = h(t, r?.fans?.supply_speed), x = h(t, r?.fans?.extract_speed), V = h(t, r?.fans?.supply_airflow), $t = h(t, r?.fans?.extract_airflow), At = h(t, r?.fans?.supply_power), Ct = h(t, r?.fans?.extract_power), kt = h(t, r?.dampers?.bypass), Mt = h(t, r?.dampers?.oda), Pt = h(t, r?.dampers?.eta), Et = h(t, r?.filters?.oda), St = h(t, r?.filters?.eta), Tt = h(t, r?.filters?.oda_life), Lt = h(t, r?.filters?.eta_life), Ot = h(t, r?.mode?.current), zt = h(t, r?.mode?.select), Ft = h(t, r?.alerts?.warning), Vt = h(t, r?.alerts?.fault), ze = {
+  const r = e.entities, a = $r(t, e), i = bt(a), n = typeof i.temperature_unit == "string" ? i.temperature_unit : "°C", o = typeof i.airflow_unit == "string" ? i.airflow_unit : null, s = typeof i.power_unit == "string" ? i.power_unit : null, l = h(t, r?.temperatures?.oda), c = h(t, r?.temperatures?.eta), f = h(t, r?.temperatures?.sup), d = h(t, r?.temperatures?.eha), y = h(t, r?.fans?.supply_speed), x = h(t, r?.fans?.extract_speed), V = h(t, r?.fans?.supply_airflow), $t = h(t, r?.fans?.extract_airflow), At = h(t, r?.fans?.supply_power), Ct = h(t, r?.fans?.extract_power), kt = h(t, r?.dampers?.bypass), Mt = h(t, r?.dampers?.oda), Pt = h(t, r?.dampers?.eta), Et = h(t, r?.filters?.oda), St = h(t, r?.filters?.eta), Tt = h(t, r?.filters?.oda_life), Lt = h(t, r?.filters?.eta_life), Ot = h(t, r?.mode?.current), zt = h(t, r?.mode?.select), Ft = h(t, r?.alerts?.warning), Vt = h(t, r?.alerts?.fault), ze = {
     temperatures: {
       oda: A(r?.temperatures?.oda ?? e.climate_entity, i.outside_air_temperature, n).available ? A(r?.temperatures?.oda ?? e.climate_entity, i.outside_air_temperature, n) : ee(r?.temperatures?.oda, l),
       eta: A(r?.temperatures?.eta ?? e.climate_entity, i.extract_air_temperature, n).available ? A(r?.temperatures?.eta ?? e.climate_entity, i.extract_air_temperature, n) : ee(r?.temperatures?.eta, c),
@@ -1110,7 +1110,7 @@ function Fr(t, e) {
       eha: A(r?.temperatures?.eha ?? e.climate_entity, i.exhaust_air_temperature, n).available ? A(r?.temperatures?.eha ?? e.climate_entity, i.exhaust_air_temperature, n) : ee(r?.temperatures?.eha, d)
     },
     fans: {
-      supply: te(r?.fans?.supply_speed ?? e.climate_entity, i.supply_fan_speed_percent, r?.fans?.supply_airflow, i.supply_airflow, o, r?.fans?.supply_power, i.supply_power, s).available ? te(r?.fans?.supply_speed ?? e.climate_entity, i.supply_fan_speed_percent, r?.fans?.supply_airflow, i.supply_airflow, o, r?.fans?.supply_power, i.supply_power, s) : Ze(r?.fans?.supply_speed, b, r?.fans?.supply_airflow, V, r?.fans?.supply_power, At),
+      supply: te(r?.fans?.supply_speed ?? e.climate_entity, i.supply_fan_speed_percent, r?.fans?.supply_airflow, i.supply_airflow, o, r?.fans?.supply_power, i.supply_power, s).available ? te(r?.fans?.supply_speed ?? e.climate_entity, i.supply_fan_speed_percent, r?.fans?.supply_airflow, i.supply_airflow, o, r?.fans?.supply_power, i.supply_power, s) : Ze(r?.fans?.supply_speed, y, r?.fans?.supply_airflow, V, r?.fans?.supply_power, At),
       extract: te(r?.fans?.extract_speed ?? e.climate_entity, i.extract_fan_speed_percent, r?.fans?.extract_airflow, i.extract_airflow, o, r?.fans?.extract_power, i.extract_power, s).available ? te(r?.fans?.extract_speed ?? e.climate_entity, i.extract_fan_speed_percent, r?.fans?.extract_airflow, i.extract_airflow, o, r?.fans?.extract_power, i.extract_power, s) : Ze(r?.fans?.extract_speed, x, r?.fans?.extract_airflow, $t, r?.fans?.extract_power, Ct)
     },
     dampers: {
@@ -1261,43 +1261,43 @@ let P = class extends O {
     t.has("stateObj") && this.stateObj && this._mainControl === "humidity" && !N(this.stateObj, Je) && (this._mainControl = "temperature"), t.has("stateObj") && (this._panel = "main", this._relatedInfo = void 0, this._relatedLoading = !1);
   }
   render() {
-    return this.stateObj ? this._panel === "related" ? this._renderRelated() : this._renderMain() : u;
+    return this.stateObj ? this._panel === "related" ? this._renderRelated() : this._renderMain() : p;
   }
   _renderMain() {
     if (!this.stateObj)
-      return u;
+      return p;
     const t = this.stateObj, e = t.attributes, r = N(t, Je) && ae(e.humidity), a = N(t, qr) || N(t, Br) || ae(e.temperature), i = Qe(e.preset_modes), n = Qe(e.fan_modes), o = e.current_temperature, s = e.current_humidity ?? e.humidity;
-    return p`
+    return u`
       <div class="current">
-        ${ae(o) ? p`
+        ${ae(o) ? u`
               <div>
                 <p class="label">${xe(this.hass, t, "current_temperature")}</p>
                 <p class="value">${ie(this.hass, t, "current_temperature", o)}</p>
               </div>
-            ` : u}
-        ${ae(s) ? p`
+            ` : p}
+        ${ae(s) ? u`
               <div>
                 <p class="label">${xe(this.hass, t, "current_humidity")}</p>
                 <p class="value">${ie(this.hass, t, "current_humidity", s)}</p>
               </div>
-            ` : u}
+            ` : p}
       </div>
 
       <div class="thermostat-block">
         <div class="controls">
-          ${a && this._mainControl === "temperature" ? p`
+          ${a && this._mainControl === "temperature" ? u`
                 <ha-state-control-climate-temperature
                   .hass=${this.hass}
                   .stateObj=${t}
                 ></ha-state-control-climate-temperature>
-              ` : u}
-          ${r && this._mainControl === "humidity" ? p`
+              ` : p}
+          ${r && this._mainControl === "humidity" ? u`
                 <ha-state-control-climate-humidity
                   .hass=${this.hass}
                   .stateObj=${t}
                 ></ha-state-control-climate-humidity>
-              ` : u}
-          ${r && a ? p`
+              ` : p}
+          ${r && a ? u`
                 <ha-icon-button-group>
                   <ha-icon-button-toggle
                     .selected=${this._mainControl === "temperature"}
@@ -1318,7 +1318,7 @@ let P = class extends O {
                     H
                   </ha-icon-button-toggle>
                 </ha-icon-button-group>
-              ` : u}
+              ` : p}
         </div>
 
         <div class="selects">
@@ -1328,21 +1328,21 @@ let P = class extends O {
       i,
       this._handlePresetModeChanged,
       (l) => ie(this.hass, t, "preset_mode", l)
-    ) : u}
+    ) : p}
         ${(N(t, Wr) || n.length > 0) && n.length > 0 ? this._renderTile(
       xe(this.hass, t, "fan_mode"),
       e.fan_mode !== void 0 ? String(e.fan_mode) : "",
       n,
       this._handleFanModeChanged,
       (l) => ie(this.hass, t, "fan_mode", l)
-    ) : u}
+    ) : p}
         </div>
       </div>
     `;
   }
   _renderRelated() {
     const t = this._relatedInfo, e = t?.integrations.length ? t.integrations.join(", ") : null;
-    return p`
+    return u`
       <div class="related-view">
         <div class="related-header">
           <ha-icon-button
@@ -1357,34 +1357,34 @@ let P = class extends O {
           <div class="related-title">Related</div>
         </div>
 
-        ${this._relatedLoading ? p`<div class="related-empty">Loading related items...</div>` : p`
+        ${this._relatedLoading ? u`<div class="related-empty">Loading related items...</div>` : u`
               <div class="related-list">
-                ${t?.deviceName ? p`
+                ${t?.deviceName ? u`
                       <div class="related-item">
                         <div class="related-label">Device</div>
                         <div class="related-value">${t.deviceName}</div>
                       </div>
-                    ` : u}
-                ${e ? p`
+                    ` : p}
+                ${e ? u`
                       <div class="related-item">
                         <div class="related-label">Integration</div>
                         <div class="related-value">${e}</div>
                       </div>
-                    ` : u}
-                ${t?.areaName ? p`
+                    ` : p}
+                ${t?.areaName ? u`
                       <div class="related-item">
                         <div class="related-label">Area</div>
                         <div class="related-value">${t.areaName}</div>
                       </div>
-                    ` : u}
-                ${!t?.deviceName && !e && !t?.areaName ? p`<div class="related-empty">No related device, integration, or area found.</div>` : u}
+                    ` : p}
+                ${!t?.deviceName && !e && !t?.areaName ? u`<div class="related-empty">No related device, integration, or area found.</div>` : p}
               </div>
             `}
       </div>
     `;
   }
   _renderTile(t, e, r, a, i) {
-    return p`
+    return u`
       <div class="select-tile">
         <ha-control-select-menu
           .hass=${this.hass}
@@ -1643,7 +1643,7 @@ function ia(t, e, r, a) {
       pe(`/config/devices/device/${encodeURIComponent(f)}`);
     });
   };
-  return p`
+  return u`
     <ha-dialog open @closed=${a} .heading=${!1}>
       <ha-icon-button
         slot="headerNavigationIcon"
@@ -1655,7 +1655,7 @@ function ia(t, e, r, a) {
       >
         <ha-svg-icon .path=${Qr}></ha-svg-icon>
       </ha-icon-button>
-      ${n ? p`<div slot="headerTitle" class="more-info-dialog-title">${n}</div>` : u}
+      ${n ? u`<div slot="headerTitle" class="more-info-dialog-title">${n}</div>` : p}
       <div slot="headerActionItems" class="more-info-header-actions">
         <ha-icon-button
           class="more-info-header-action"
@@ -1703,9 +1703,9 @@ function ia(t, e, r, a) {
           </ha-dropdown-item>
         </ha-dropdown>
       </div>
-      ${i ? p`
+      ${i ? u`
             <atrea-more-info-climate .hass=${e} .stateObj=${i}></atrea-more-info-climate>
-          ` : u}
+          ` : p}
     </ha-dialog>
   `;
 }
@@ -1745,7 +1745,7 @@ function wt(t, e) {
   return ["badge", t ? "" : "is-muted", e ?? ""].filter(Boolean).join(" ");
 }
 function se(t, e, r, a, i) {
-  return y`
+  return b`
     <g class=${wt(e.available, "temp-badge")} transform="translate(${r}, ${a})" @click=${i}>
       <rect x="-56" y="-24" width="112" height="48" rx="14"></rect>
       <text x="0" y="5" class="badge-value temperature-only">${gt(e.value, e.unit, 1)}</text>
@@ -1753,16 +1753,25 @@ function se(t, e, r, a, i) {
   `;
 }
 function Xe(t, e, r, a) {
-  return y`
+  return b`
     <g class=${wt(t.available, "metric-badge fan-speed-badge")} transform="translate(${e}, ${r})" @click=${a}>
       <rect x="-45" y="-18" width="90" height="36" rx="9"></rect>
       <text x="0" y="4" class="badge-value temperature-only">${gt(t.speedPercent, "%", 0)}</text>
     </g>
   `;
 }
+function sa(t, e, r, a) {
+  const i = t.value === null ? "--" : `${Math.round(t.value)} ${t.unit}`;
+  return b`
+    <g class="badge metric-badge airflow-request-badge" transform="translate(${e}, ${r})" @click=${a}>
+      <rect x="-80" y="-18" width="160" height="36" rx="9"></rect>
+      <text x="0" y="4" class="badge-value temperature-only">${i}</text>
+    </g>
+  `;
+}
 function et(t, e, r, a, i) {
   const n = na(e.speedPercent);
-  return y`
+  return b`
     <g class="fan-group" transform="translate(${r}, ${a})" @click=${i}>
       <circle class="fan-shell" r="44"></circle>
       <g class="fan-rotor">
@@ -1770,18 +1779,18 @@ function et(t, e, r, a, i) {
         <path d="M 32 0 C 32 18 13 27 4 11 C 0 7 4 0 10 0 Z"></path>
         <path d="M 0 32 C -18 32 -27 13 -11 4 C -7 0 0 4 0 10 Z"></path>
         <path d="M -32 0 C -32 -18 -13 -27 -4 -11 C 0 -7 -4 0 -10 0 Z"></path>
-        ${e.speedPercent && e.speedPercent > 0 ? y`<animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur=${n} repeatCount="indefinite"></animateTransform>` : u}
+        ${e.speedPercent && e.speedPercent > 0 ? b`<animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur=${n} repeatCount="indefinite"></animateTransform>` : p}
       </g>
       <circle class="fan-core" r="9"></circle>
     </g>
   `;
 }
-function sa(t) {
+function la(t) {
   return (t.percentOpen ?? 0) / 100 * 90;
 }
 function tt(t, e, r, a, i, n) {
-  const s = 90 - sa(e);
-  return y`
+  const s = 90 - la(e);
+  return b`
     <g class=${["damper", e.available ? "" : "is-muted"].filter(Boolean).join(" ")} transform="translate(${r}, ${a})" @click=${n}>
       <circle r="20" class="damper-ring"></circle>
       <g transform=${`rotate(${-s})`}>
@@ -1801,7 +1810,7 @@ function rt(t) {
     Number.parseInt(e.slice(4, 6), 16)
   ];
 }
-function la(t, e) {
+function ca(t, e) {
   const r = Math.max(t[0].at, Math.min(t[t.length - 1].at, e));
   for (let a = 0; a < t.length - 1; a += 1) {
     const i = t[a], n = t[a + 1];
@@ -1812,7 +1821,7 @@ function la(t, e) {
   }
   return t[t.length - 1].color;
 }
-function ca(t) {
+function pa(t) {
   if (t.lifePercent === null)
     return {
       color: "rgb(139 160 181)",
@@ -1820,7 +1829,7 @@ function ca(t) {
       text: t.available ? "service" : "N/C",
       critical: !1
     };
-  const e = Math.max(0, Math.min(60, t.lifePercent)), r = la(
+  const e = Math.max(0, Math.min(60, t.lifePercent)), r = ca(
     [
       { at: 0, color: "#d93c3c" },
       { at: 15, color: "#e06a3a" },
@@ -1837,23 +1846,23 @@ function ca(t) {
   };
 }
 function at(t, e, r, a) {
-  const i = ca(t);
-  return y`
+  const i = pa(t);
+  return b`
     <g
       class=${["filter", `is-${t.severity}`, t.available ? "" : "is-muted", i.critical ? "is-critical-pulse" : ""].filter(Boolean).join(" ")}
       @click=${a}
       style=${`--filter-color:${i.color}; --filter-opacity:${i.opacity};`}
     >
       <path class="filter-body" d=${e}></path>
-      ${r.map((n) => y`<path class="filter-slat" d=${n}></path>`)}
+      ${r.map((n) => b`<path class="filter-slat" d=${n}></path>`)}
     </g>
   `;
 }
 function le(t) {
-  return p`<ha-svg-icon .path=${t}></ha-svg-icon>`;
+  return u`<ha-svg-icon .path=${t}></ha-svg-icon>`;
 }
-function pa() {
-  return y`
+function ua() {
+  return b`
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d=${Oe}></path>
       <path d="M 21.703253 4.7618552 L 19.958952 2.8872845 L 18.214651 4.7618552" fill="none" stroke="currentColor" stroke-width="1.8114" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -1861,8 +1870,8 @@ function pa() {
     </svg>
   `;
 }
-function ua() {
-  return y`
+function da() {
+  return b`
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d=${Oe}></path>
       <path d="M 3.2824585 1.8140332 L 1.6824585 3.6140332 L 3.2824585 5.4140332" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -1872,15 +1881,15 @@ function ua() {
     </svg>
   `;
 }
-const da = [
+const fa = [
   { id: "standby", label: "Standby", icon: le(Rr), matches: ["standby", "stand-by", "off"] },
   { id: "interval", label: "Interval", icon: le(Nr), matches: ["interval", "intervals", "auto"] },
   { id: "ventilation", label: "Ventilation only", icon: le(Oe), matches: ["ventilation", "ventilation only"] },
   { id: "night-cooling", label: "Night cooling", icon: le(Ir), matches: ["night cooling", "night_cooling", "cooling"] },
-  { id: "disbalance", label: "Disbalance", icon: ua(), matches: ["disbalance", "imbalance"] },
-  { id: "fan", label: "Fan", icon: pa(), matches: [] }
+  { id: "disbalance", label: "Disbalance", icon: da(), matches: ["disbalance", "imbalance"] },
+  { id: "fan", label: "Fan", icon: ua(), matches: [] }
 ];
-function fa(t, e) {
+function ha(t, e) {
   const r = t.map((a) => ({ option: a, lower: a.toLowerCase() }));
   for (const a of e) {
     const i = r.find(({ lower: n }) => n === a || n.includes(a));
@@ -1889,8 +1898,8 @@ function fa(t, e) {
   }
   return null;
 }
-function ha(t) {
-  return t.length === 0 ? p`` : p`
+function ma(t) {
+  return t.length === 0 ? u`` : u`
     <div
       class="official-card-features"
       style="--feature-color:var(--state-climate-off-color, var(--state-climate-inactive-color, var(--state-inactive-color)));"
@@ -1903,7 +1912,7 @@ function ha(t) {
           style="--control-select-color:var(--state-climate-off-color, var(--state-climate-inactive-color, var(--state-inactive-color)));"
         >
           ${t.map(
-    (e) => p`
+    (e) => u`
               <div
                 role="radio"
                 id=${e.id}
@@ -1923,10 +1932,10 @@ function ha(t) {
     </div>
   `;
 }
-function ma(t, e, r) {
+function ga(t, e, r) {
   const a = e.mode.preset.options, i = e.mode.preset.current?.toLowerCase() ?? "";
-  return ha(
-    da.map((n) => {
+  return ma(
+    fa.map((n) => {
       if (n.id === "fan")
         return {
           action: r.onToggleFanPopup,
@@ -1936,7 +1945,7 @@ function ma(t, e, r) {
           label: n.label,
           selected: r.fanPopupOpen
         };
-      const o = fa(a, [...n.matches]);
+      const o = ha(a, [...n.matches]);
       return {
         action: o && e.mode.climateEntity ? () => ht(t, e.mode.climateEntity, "preset", o) : void 0,
         disabled: !o || !e.mode.climateEntity,
@@ -1948,11 +1957,11 @@ function ma(t, e, r) {
     })
   );
 }
-function ga(t, e) {
+function va(t, e) {
   if (!e.fanPopupOpen || !t.airflowRequest && !t.mode.fan.controllable)
-    return p``;
+    return u``;
   const r = t.airflowRequest, a = r?.min ?? 0, i = r?.max ?? 100, n = r?.step ?? 1, o = Math.round(Math.max(a, Math.min(i, e.fanPopupValue))), s = r ? "Airflow" : "Fan speed", l = r ? `${o}${r.unit ? ` ${r.unit}` : ""}` : `${o}%`;
-  return p`
+  return u`
     <div class="fan-popup-shell" @click=${e.onCloseFanPopup}>
       <div class="fan-popup-backdrop"></div>
       <div
@@ -1992,11 +2001,11 @@ function ga(t, e) {
     </div>
   `;
 }
-function va(t, e) {
+function ba(t, e) {
   if (!t.alerts.warning && !t.alerts.fault)
-    return p``;
+    return u``;
   const r = `${t.alerts.notifications.length || t.alerts.warningCount + t.alerts.faultCount} active alert${(t.alerts.notifications.length || t.alerts.warningCount + t.alerts.faultCount) === 1 ? "" : "s"}`;
-  return p`
+  return u`
     <ha-icon-button
       class="alert-info ${t.alerts.fault ? "is-fault" : "is-warning"}"
       .label=${r}
@@ -2007,14 +2016,14 @@ function va(t, e) {
     </ha-icon-button>
   `;
 }
-function ba(t, e) {
+function ya(t, e) {
   if (!e.alertPopupOpen || !t.alerts.warning && !t.alerts.fault)
-    return p``;
+    return u``;
   const r = t.alerts.fault ? "Fault active" : "Warning active", a = t.alerts.notifications.length > 0 ? t.alerts.notifications : t.alerts.details.map((i, n) => ({
     kind: t.alerts.fault && n === 0 ? "fault" : "warning",
     fullMessage: i
   }));
-  return p`
+  return u`
     <div class="alert-popup-shell" @click=${e.onCloseAlertPopup}>
       <div class="alert-popup-backdrop"></div>
       <div
@@ -2028,7 +2037,7 @@ function ba(t, e) {
         </div>
         <div class="alert-popup-body">
           ${a.map(
-    (i) => p`
+    (i) => u`
               <p class="alert-popup-text ${i.kind === "fault" ? "is-fault" : "is-warning"}">${i.fullMessage}</p>
             `
   )}
@@ -2037,15 +2046,15 @@ function ba(t, e) {
     </div>
   `;
 }
-function ya(t, e, r, a) {
+function _a(t, e, r, a) {
   const i = e.layout, n = r.dampers.bypass.percentOpen ?? 0, o = n <= 0, s = n >= 100 ? 0.3 : n > 0 ? 0.65 : 1, l = n <= 0 ? 0 : n >= 100 ? 1 : 0.35 + n / 150, c = e.tap_actions, f = t.localize?.("ui.panel.lovelace.cards.show_more_info") ?? "Show more information", d = xt(e, t.states[e.climate_entity]);
-  return p`
-    ${va(r, a)}
+  return u`
     ${ba(r, a)}
-    ${d ? p`<p class="title">${d}</p>` : u}
+    ${ya(r, a)}
+    ${d ? u`<p class="title">${d}</p>` : p}
 
     <div class=${d ? "container" : "container no-title"}>
-      ${ga(r, a)}
+      ${va(r, a)}
 
       <div class="main-stage">
         <div class="canvas-wrap">
@@ -2095,17 +2104,19 @@ function ya(t, e, r, a) {
                 </g>
 
                 <g class="overlay-layer">
-                  ${i.show_temp ? y`
+                  ${i.show_temp ? b`
                         ${se("EHA", r.temperatures.eha, C.eha.x, C.eha.y, () => v(a.host, c.eha_temperature, r.temperatures.eha.entity))}
                         ${se("ODA", r.temperatures.oda, C.oda.x, C.oda.y, () => v(a.host, c.oda_temperature, r.temperatures.oda.entity))}
                         ${se("SUP", r.temperatures.sup, C.sup.x, C.sup.y, () => v(a.host, c.sup_temperature, r.temperatures.sup.entity))}
                         ${se("ETA", r.temperatures.eta, C.eta.x, C.eta.y, () => v(a.host, c.eta_temperature, r.temperatures.eta.entity))}
-                      ` : u}
+                      ` : p}
 
-                  ${i.show_speed ? y`
+                  ${i.show_speed ? b`
                         ${Xe(r.fans.extract, 255, 115, () => v(a.host, c.extract_fan, r.fans.extract.speedEntity))}
                         ${Xe(r.fans.supply, 745, 115, () => v(a.host, c.supply_fan, r.fans.supply.speedEntity))}
-                      ` : u}
+                      ` : p}
+
+                  ${i.show_airflow && r.airflowRequest ? sa(r.airflowRequest, 500, 150, a.onToggleFanPopup) : p}
 
                   <g class="port-labels">
                     <circle cx="170" cy="190" r="30" class="port-dot eha"></circle>
@@ -2132,12 +2143,12 @@ function ya(t, e, r, a) {
         <ha-svg-icon .path=${_t}></ha-svg-icon>
       </ha-icon-button>
 
-    ${ma(t, r, a)}
+    ${ga(t, r, a)}
 
-    ${r.availability !== "full" ? p`<div class="availability-note">Partial telemetry: card remains active, but some data is unavailable.</div>` : u}
+    ${r.availability !== "full" ? u`<div class="availability-note">Partial telemetry: card remains active, but some data is unavailable.</div>` : p}
   `;
 }
-const _a = nt`
+const xa = nt`
   :host {
     display: block;
     --atrea-bg: var(--ha-card-background, var(--card-background-color, #fff));
@@ -3234,12 +3245,12 @@ const _a = nt`
     }
   }
 `;
-var xa = Object.defineProperty, wa = Object.getOwnPropertyDescriptor, E = (t, e, r, a) => {
-  for (var i = a > 1 ? void 0 : a ? wa(e, r) : e, n = t.length - 1, o; n >= 0; n--)
+var wa = Object.defineProperty, $a = Object.getOwnPropertyDescriptor, E = (t, e, r, a) => {
+  for (var i = a > 1 ? void 0 : a ? $a(e, r) : e, n = t.length - 1, o; n >= 0; n--)
     (o = t[n]) && (i = (a ? o(e, r, i) : o(i)) || i);
-  return a && i && xa(e, r, i), i;
+  return a && i && wa(e, r, i), i;
 };
-const $a = 8e3, Aa = 8e3;
+const Aa = 8e3, Ca = 8e3;
 let _ = class extends O {
   constructor() {
     super(...arguments), this.isMoreInfoOpen = !1, this.isFanPopupOpen = !1, this.isAlertPopupOpen = !1, this.fanPopupValue = null;
@@ -3252,22 +3263,22 @@ let _ = class extends O {
   }
   render() {
     if (this.errorMessage)
-      return p`<ha-card class="type-custom-atrea-amotion-card"><div class="container">${this.errorMessage}</div></ha-card>`;
+      return u`<ha-card class="type-custom-atrea-amotion-card"><div class="container">${this.errorMessage}</div></ha-card>`;
     if (!this.config)
-      return p`<ha-card class="type-custom-atrea-amotion-card"><div class="container">Card is not configured.</div></ha-card>`;
+      return u`<ha-card class="type-custom-atrea-amotion-card"><div class="container">Card is not configured.</div></ha-card>`;
     if (!this.hass)
-      return p`<ha-card class="type-custom-atrea-amotion-card"><div class="container">Home Assistant state not available.</div></ha-card>`;
+      return u`<ha-card class="type-custom-atrea-amotion-card"><div class="container">Home Assistant state not available.</div></ha-card>`;
     let t;
     try {
       t = Fr(this.hass, this.config);
     } catch (s) {
       const l = s instanceof Error ? s.message : "Unknown rendering error";
-      return p`<ha-card class="type-custom-atrea-amotion-card"><div class="container">${l}</div></ha-card>`;
+      return u`<ha-card class="type-custom-atrea-amotion-card"><div class="container">${l}</div></ha-card>`;
     }
     const e = this.config.layout ?? {}, r = this.config.theme_variant ?? "auto", a = ["type-custom-atrea-amotion-card", e.compact ? "is-compact" : "", `theme-${r}`].filter(Boolean).join(" "), i = Number.parseFloat(t.mode.fan.current ?? ""), n = t.fans.supply.speedPercent ?? t.fans.extract.speedPercent, o = t.airflowRequest ? t.airflowRequest.value ?? t.airflowRequest.min : Number.isFinite(i) ? i : n;
-    return p`
+    return u`
       <ha-card class=${a}>
-        ${ya(this.hass, this.config, t, {
+        ${_a(this.hass, this.config, t, {
       host: this,
       alertPopupOpen: this.isAlertPopupOpen,
       fanPopupOpen: this.isFanPopupOpen,
@@ -3303,7 +3314,7 @@ let _ = class extends O {
       () => {
         this.isMoreInfoOpen = !1, this.requestUpdate();
       }
-    ) : p``}
+    ) : u``}
       </ha-card>
     `;
   }
@@ -3326,7 +3337,7 @@ let _ = class extends O {
   resetAlertPopupTimeout() {
     this.isAlertPopupOpen && (this.clearAlertPopupTimeout(), this.alertPopupTimeoutId = window.setTimeout(() => {
       this.closeAlertPopup(), this.requestUpdate();
-    }, Aa));
+    }, Ca));
   }
   openFanPopup(t) {
     this.fanPopupValue = t, this.isFanPopupOpen = !0, this.resetFanPopupTimeout();
@@ -3340,7 +3351,7 @@ let _ = class extends O {
   resetFanPopupTimeout() {
     this.isFanPopupOpen && (this.clearFanPopupTimeout(), this.fanPopupTimeoutId = window.setTimeout(() => {
       this.closeFanPopup(), this.requestUpdate();
-    }, $a));
+    }, Aa));
   }
   getFanStepOptions(t) {
     const e = t.mode.fan.options.map((a) => Number.parseFloat(a)).filter((a) => Number.isFinite(a)).sort((a, i) => a - i);
@@ -3421,7 +3432,7 @@ let _ = class extends O {
     };
   }
 };
-_.styles = _a;
+_.styles = xa;
 E([
   Y({ attribute: !1 })
 ], _.prototype, "hass", 2);
@@ -3453,8 +3464,8 @@ window.customCards.push({
   description: "SVG Lovelace card for Atrea heat recovery ventilation units",
   preview: !0
 });
-const Ma = _;
+const Pa = _;
 export {
   _ as AtreaAmotionCard,
-  Ma as default
+  Pa as default
 };
